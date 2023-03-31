@@ -1,6 +1,18 @@
-const animateBtn = document.getElementById('animate-btn');
-animateBtn.addEventListener('click', () => {
-	const heading = document.querySelector('h1');
-	heading.style.animation = 'color-change 1s ease-in-out alternate infinite';
+const messagesDiv = document.getElementById('messages');
+const messageForm = document.getElementById('message-form');
+const messageInput = document.getElementById('message-input');
+
+messageForm.addEventListener('submit', (event) => {
+	event.preventDefault();
+	if (messageInput.value) {
+		sendMessage(messageInput.value);
+		messageInput.value = '';
+	}
 });
 
+function sendMessage(message) {
+	const messageElement = document.createElement('div');
+	messageElement.classList.add('message');
+	messageElement.textContent = message;
+	messagesDiv.appendChild(messageElement);
+}
